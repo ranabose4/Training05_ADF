@@ -1,0 +1,6 @@
+{
+	"name": "shirlocal",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
