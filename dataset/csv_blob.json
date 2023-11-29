@@ -1,0 +1,30 @@
+{
+	"name": "csv_blob",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Blob_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"input": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": {
+					"value": "@dataset().input",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
