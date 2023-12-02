@@ -1,24 +1,53 @@
 {
-	"name": "pipeline1",
+	"name": "pipeline2",
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
-				"type": "Copy",
+				"name": "Execute Pipeline1",
+				"type": "ExecutePipeline",
 				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
 				"userProperties": [],
 				"typeProperties": {
-					"enableStaging": false
+					"pipeline": {
+						"referenceName": "Copy_Data",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"input_parameter": {
+							"value": "@pipeline().parameters.pip2_input",
+							"type": "Expression"
+						},
+						"output_parameter": {
+							"value": "@pipeline().parameters.pip2_output",
+							"type": "Expression"
+						},
+						"input_file_name": {
+							"value": "@pipeline().parameters.pip2_input_file",
+							"type": "Expression"
+						},
+						"output_filename": {
+							"value": "@pipeline().parameters.pip2_output_file",
+							"type": "Expression"
+						}
+					}
 				}
 			}
 		],
+		"parameters": {
+			"pip2_input": {
+				"type": "string"
+			},
+			"pip2_output": {
+				"type": "string"
+			},
+			"pip2_input_file": {
+				"type": "string"
+			},
+			"pip2_output_file": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "Project"
 		},
