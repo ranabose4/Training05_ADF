@@ -1,0 +1,34 @@
+{
+	"name": "parquet_file",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Blob_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"path": {
+				"type": "string"
+			},
+			"output_file": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().output_file",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().path",
+					"type": "Expression"
+				}
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
