@@ -15,6 +15,12 @@
 					"input_file_name": "employees.csv",
 					"output_filename": "employees.csv"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline1",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
