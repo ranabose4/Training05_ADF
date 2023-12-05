@@ -13,6 +13,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"userProperties": [],
 				"typeProperties": {
 					"source": {
 						"type": "DelimitedTextSource",
@@ -37,104 +38,6 @@
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"name": "First_Name",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First_Name",
-									"type": "String",
-									"physicalType": "UTF8"
-								}
-							},
-							{
-								"source": {
-									"name": "Gender",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Gender",
-									"type": "String",
-									"physicalType": "UTF8"
-								}
-							},
-							{
-								"source": {
-									"name": "Start_Date",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Start_Date",
-									"type": "String",
-									"physicalType": "UTF8"
-								}
-							},
-							{
-								"source": {
-									"name": "Last_Login_Time",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Last_Login_Time",
-									"type": "String",
-									"physicalType": "UTF8"
-								}
-							},
-							{
-								"source": {
-									"name": "Salary",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Salary",
-									"type": "String",
-									"physicalType": "UTF8"
-								}
-							},
-							{
-								"source": {
-									"name": "Bonus",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Bonus",
-									"type": "String",
-									"physicalType": "UTF8"
-								}
-							},
-							{
-								"source": {
-									"name": "Senior_Management",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Senior_Management",
-									"type": "String",
-									"physicalType": "UTF8"
-								}
-							},
-							{
-								"source": {
-									"name": "Team",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Team",
-									"type": "String",
-									"physicalType": "UTF8"
-								}
-							}
-						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
