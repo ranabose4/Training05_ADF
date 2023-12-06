@@ -51,7 +51,7 @@
 						"referenceName": "csv_blob",
 						"type": "DatasetReference",
 						"parameters": {
-							"input": "input",
+							"Container_name": "input",
 							"file_name": "employees.csv"
 						}
 					}
