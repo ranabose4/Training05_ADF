@@ -1,5 +1,5 @@
 {
-	"name": "pipeline4",
+	"name": "Get_Meta_Data",
 	"properties": {
 		"activities": [
 			{
@@ -24,6 +24,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -33,7 +34,7 @@
 			}
 		],
 		"folder": {
-			"name": "Project"
+			"name": "Day1"
 		},
 		"annotations": []
 	}
