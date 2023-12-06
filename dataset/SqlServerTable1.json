@@ -3,13 +3,22 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "SqlServer1",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"Database": {
+					"value": "@dataset().Database__Name",
+					"type": "Expression"
+				}
+			}
 		},
 		"parameters": {
 			"Schema_name": {
 				"type": "string"
 			},
 			"Table_Name": {
+				"type": "string"
+			},
+			"Database__Name": {
 				"type": "string"
 			}
 		},
