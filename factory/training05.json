@@ -2,10 +2,6 @@
 	"name": "training05",
 	"properties": {
 		"globalParameters": {
-			"env": {
-				"type": "string",
-				"value": "DEV"
-			},
 			"Schema_Name_gbl": {
 				"type": "string",
 				"value": "dbo"
