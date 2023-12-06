@@ -2,11 +2,16 @@
 	"name": "SqlServer1",
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
+		"parameters": {
+			"Database": {
+				"type": "String"
+			}
+		},
 		"annotations": [],
 		"type": "SqlServer",
 		"typeProperties": {
-			"connectionString": "integrated security=False;data source=DHIREN;initial catalog=Dev;user id=test",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI2YzFkZjRmYi02NDA1LTQwNWQtOWQ5Yi03NDYyMDZmZGU3YzQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"connectionString": "integrated security=False;data source=DHIREN;initial catalog=@{linkedService().Database};user id=test",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyODI2NGVlZS1lYWI5LTQ0OWMtODcwNC1mMTEzOGY0ZGY5MjQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntime1",
