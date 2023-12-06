@@ -1,74 +1,10 @@
 {
-	"name": "Copy_Data",
+	"name": "Copy_Data_file_to_file",
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
-				"type": "Copy",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "SqlServerSource",
-						"sqlReaderQuery": "select * from dbo.departmnet",
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
-					},
-					"sink": {
-						"type": "ParquetSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "ParquetWriteSettings"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "SqlServerTable1",
-						"type": "DatasetReference",
-						"parameters": {
-							"Table_Name": "employee",
-							"Schema_name": "dbo"
-						}
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "parquet_file",
-						"type": "DatasetReference",
-						"parameters": {
-							"path": {
-								"value": "@pipeline().parameters.output_parameter",
-								"type": "Expression"
-							},
-							"output_file": {
-								"value": "@pipeline().parameters.output_filename",
-								"type": "Expression"
-							}
-						}
-					}
-				]
-			},
-			{
 				"name": "Copy data1_copy1",
+				"description": "Read from file write to file",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
