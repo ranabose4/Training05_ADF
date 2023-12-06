@@ -48,7 +48,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"Schema_name": "dbo",
-							"Table_Name": "employee"
+							"Table_Name": "employees"
 						}
 					}
 				],
