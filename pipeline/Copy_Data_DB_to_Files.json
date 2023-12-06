@@ -1,0 +1,9 @@
+{
+	"name": "Copy_Data_DB_to_Files",
+	"properties": {
+		"folder": {
+			"name": "Day3"
+		},
+		"annotations": []
+	}
+}
