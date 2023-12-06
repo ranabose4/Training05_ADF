@@ -26,7 +26,7 @@
 						"referenceName": "csv_blob",
 						"type": "DatasetReference",
 						"parameters": {
-							"input": "input",
+							"Container_name": "input",
 							"file_name": "employees.csv"
 						}
 					},
@@ -35,6 +35,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -59,7 +60,6 @@
 						"referenceName": "SqlServerTable1",
 						"type": "DatasetReference",
 						"parameters": {
-							"Table_Name": "employee",
 							"Schema_name": "dbo"
 						}
 					},
@@ -70,7 +70,7 @@
 			}
 		],
 		"folder": {
-			"name": "Project"
+			"name": "Day2"
 		},
 		"annotations": []
 	}
