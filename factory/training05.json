@@ -9,6 +9,10 @@
 			"Schema_Name_gbl": {
 				"type": "string",
 				"value": "dbo"
+			},
+			"DataBase_Name": {
+				"type": "string",
+				"value": "Dev"
 			}
 		},
 		"globalConfigurations": {
