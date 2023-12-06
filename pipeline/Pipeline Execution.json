@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "Copy_Data",
+						"referenceName": "Copy_Data_file_to_file",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true,
