@@ -1,0 +1,58 @@
+{
+	"name": "pipeline4_Del",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "select * from dbo.Employees",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SqlServerTable_del",
+						"type": "DatasetReference",
+						"parameters": {
+							"Data_Set_Database": {
+								"value": "@pipeline().globalParameters.DataBase_Name",
+								"type": "Expression"
+							},
+							"Schema_Name": {
+								"value": "@pipeline().globalParameters.Schema_Name_gbl",
+								"type": "Expression"
+							},
+							"Table_Name": {
+								"value": "@pipeline().parameters.Table_Name",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"Table_Name": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Day3"
+		},
+		"annotations": []
+	}
+}

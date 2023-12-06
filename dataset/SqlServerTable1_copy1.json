@@ -1,0 +1,39 @@
+{
+	"name": "SqlServerTable1_copy1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer1",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"Database": {
+					"value": "@dataset().Database__Name",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"Schema_name": {
+				"type": "string"
+			},
+			"Table_Name": {
+				"type": "string"
+			},
+			"Database__Name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().Schema_name",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().Table_Name",
+				"type": "Expression"
+			}
+		}
+	}
+}
