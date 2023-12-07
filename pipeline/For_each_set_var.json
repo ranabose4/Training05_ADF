@@ -1,5 +1,5 @@
 {
-	"name": "Lookup_for_ezah",
+	"name": "For_each_set_var",
 	"properties": {
 		"activities": [
 			{
@@ -96,7 +96,7 @@
 			}
 		},
 		"folder": {
-			"name": "Day5"
+			"name": "Day6"
 		},
 		"annotations": []
 	}
