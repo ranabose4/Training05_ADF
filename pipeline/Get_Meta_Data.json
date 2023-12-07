@@ -17,7 +17,17 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "csv_blob",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Container_name": {
+								"value": "@pipeline().parameters.Container_Name",
+								"type": "Expression"
+							},
+							"file_name": {
+								"value": "@pipeline().parameters.File_Name",
+								"type": "Expression"
+							}
+						}
 					},
 					"fieldList": [
 						"structure"
@@ -33,6 +43,14 @@
 				}
 			}
 		],
+		"parameters": {
+			"Container_Name": {
+				"type": "String"
+			},
+			"File_Name": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "Day1"
 		},

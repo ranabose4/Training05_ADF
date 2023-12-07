@@ -60,7 +60,18 @@
 						"referenceName": "SqlServerTable1",
 						"type": "DatasetReference",
 						"parameters": {
-							"Schema_name": "dbo"
+							"Schema_name": {
+								"value": "@pipeline().globalParameters.Schema_Name_gbl",
+								"type": "Expression"
+							},
+							"Table_Name": {
+								"value": "@pipeline().parameters.Table_Name",
+								"type": "Expression"
+							},
+							"Database__Name": {
+								"value": "@pipeline().globalParameters.DataBase_Name",
+								"type": "Expression"
+							}
 						}
 					},
 					"fieldList": [
@@ -69,6 +80,14 @@
 				}
 			}
 		],
+		"parameters": {
+			"Container_Name": {
+				"type": "String"
+			},
+			"Table_Name": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "Day2"
 		},
