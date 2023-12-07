@@ -98,7 +98,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "TableName_Var",
+								"variableName": "status_VAr",
 								"value": {
 									"value": "@item().status",
 									"type": "Expression"
