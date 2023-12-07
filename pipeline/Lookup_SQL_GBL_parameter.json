@@ -18,7 +18,7 @@
 					"source": {
 						"type": "SqlServerSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM ',pipeline().globalParameters.Schema_Name_gbl,'.',pipeline().parameters.Table_Name)",
+							"value": "SELECT * FROM @{pipeline().globalParameters.Schema_Name_gbl}.@{pipeline().parameters.Table_Name}",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -47,9 +47,6 @@
 			}
 		],
 		"parameters": {
-			"Schema_Name": {
-				"type": "string"
-			},
 			"Table_Name": {
 				"type": "string"
 			}
