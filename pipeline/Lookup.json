@@ -1,5 +1,5 @@
 {
-	"name": "Get_Metadata",
+	"name": "Lookup",
 	"properties": {
 		"activities": [
 			{
@@ -41,7 +41,8 @@
 								"type": "Expression"
 							}
 						}
-					}
+					},
+					"firstRowOnly": false
 				}
 			},
 			{
@@ -57,6 +58,11 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup1').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "Set variable1",
