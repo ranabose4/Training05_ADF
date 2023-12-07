@@ -80,6 +80,30 @@
 									"type": "Expression"
 								}
 							}
+						},
+						{
+							"name": "Set variable1_copy1",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Set variable1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "TableName_Var",
+								"value": {
+									"value": "@item().status",
+									"type": "Expression"
+								}
+							}
 						}
 					]
 				}
@@ -92,6 +116,9 @@
 		},
 		"variables": {
 			"TableName_Var": {
+				"type": "String"
+			},
+			"status_VAr": {
 				"type": "String"
 			}
 		},
