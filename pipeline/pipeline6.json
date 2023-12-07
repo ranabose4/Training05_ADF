@@ -1,10 +1,10 @@
 {
-	"name": "Lookup_SQL_parameter",
+	"name": "pipeline6",
 	"properties": {
 		"activities": [
 			{
-				"name": "Lookup1",
-				"type": "Lookup",
+				"name": "Copy data1",
+				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -17,11 +17,13 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "@concat('SELECT * FROM ',pipeline().parameters.Schema_Name,'.',pipeline().parameters.Table_Name)",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
-					"dataset": {
+					"enableStaging": false
+				},
+				"inputs": [
+					{
 						"referenceName": "SqlServerTable1",
 						"type": "DatasetReference",
 						"parameters": {
@@ -39,13 +41,10 @@
 							}
 						}
 					}
-				}
+				]
 			}
 		],
 		"parameters": {
-			"Schema_Name": {
-				"type": "string"
-			},
 			"Table_Name": {
 				"type": "string"
 			}

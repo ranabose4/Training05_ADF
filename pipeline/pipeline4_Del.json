@@ -22,27 +22,7 @@
 						"partitionOption": "None"
 					},
 					"enableStaging": false
-				},
-				"inputs": [
-					{
-						"referenceName": "SqlServerTable_del",
-						"type": "DatasetReference",
-						"parameters": {
-							"Data_Set_Database": {
-								"value": "@pipeline().globalParameters.DataBase_Name",
-								"type": "Expression"
-							},
-							"Schema_Name": {
-								"value": "@pipeline().globalParameters.Schema_Name_gbl",
-								"type": "Expression"
-							},
-							"Table_Name": {
-								"value": "@pipeline().parameters.Table_Name",
-								"type": "Expression"
-							}
-						}
-					}
-				]
+				}
 			}
 		],
 		"parameters": {
