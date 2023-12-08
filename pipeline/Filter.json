@@ -19,8 +19,8 @@
 				}
 			},
 			{
-				"name": "ForEach1",
-				"type": "ForEach",
+				"name": "Set variable2",
+				"type": "SetVariable",
 				"dependsOn": [
 					{
 						"activity": "Filter1",
@@ -29,32 +29,17 @@
 						]
 					}
 				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
-					"items": {
-						"value": "@activity('Filter1').output",
+					"variableName": "New_Data",
+					"value": {
+						"value": "@activity('Filter1').output.value",
 						"type": "Expression"
-					},
-					"isSequential": true,
-					"activities": [
-						{
-							"name": "Set variable1",
-							"type": "SetVariable",
-							"dependsOn": [],
-							"policy": {
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"variableName": "New_Data",
-								"value": {
-									"value": "@item()",
-									"type": "Expression"
-								}
-							}
-						}
-					]
+					}
 				}
 			}
 		],
@@ -70,7 +55,7 @@
 		},
 		"variables": {
 			"New_Data": {
-				"type": "Integer"
+				"type": "Array"
 			}
 		},
 		"folder": {
