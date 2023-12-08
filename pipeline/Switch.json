@@ -111,6 +111,31 @@
 									}
 								}
 							]
+						},
+						{
+							"value": "AAA",
+							"activities": [
+								{
+									"name": "Set variable2",
+									"type": "SetVariable",
+									"dependsOn": [],
+									"policy": {
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "File_name",
+										"value": {
+											"value": "@pipeline().parameters.File_Name",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						},
+						{
+							"value": "Case4"
 						}
 					]
 				}
