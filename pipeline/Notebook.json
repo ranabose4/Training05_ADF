@@ -15,16 +15,16 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Repos/Project/training06/Day2/Dbutils"
+					"notebookPath": "/Repos/Project/training06/Day2/a"
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureDatabricks1",
+					"referenceName": "Databricks",
 					"type": "LinkedServiceReference"
 				}
 			}
 		],
 		"folder": {
-			"name": "Day 7"
+			"name": "Day8"
 		},
 		"annotations": []
 	}
