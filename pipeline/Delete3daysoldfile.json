@@ -30,10 +30,6 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
-						"modifiedDatetimeStart": {
-							"value": "@adddays(utcnow(),-3)",
-							"type": "Expression"
-						},
 						"modifiedDatetimeEnd": {
 							"value": "@adddays(utcnow(),-2)",
 							"type": "Expression"
