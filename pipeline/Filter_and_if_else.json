@@ -1,5 +1,5 @@
 {
-	"name": "Filter_copy1",
+	"name": "Filter_and_if_else",
 	"properties": {
 		"activities": [
 			{
@@ -35,9 +35,28 @@
 						"value": "@contains(activity('Filter1').output.value,4)",
 						"type": "Expression"
 					},
+					"ifFalseActivities": [
+						{
+							"name": "4 missing",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "New_Data",
+								"value": {
+									"value": "@activity('Filter1').output.value",
+									"type": "Expression"
+								}
+							}
+						}
+					],
 					"ifTrueActivities": [
 						{
-							"name": "Set variable3",
+							"name": "4 found",
 							"type": "SetVariable",
 							"dependsOn": [],
 							"policy": {
@@ -61,6 +80,9 @@
 			"Data": {
 				"type": "array",
 				"defaultValue": [
+					1,
+					2,
+					3,
 					6,
 					5,
 					4
