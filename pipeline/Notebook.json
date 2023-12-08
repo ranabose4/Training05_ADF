@@ -15,14 +15,43 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Repos/Project/training06/Day2/a"
+					"notebookPath": "/Repos/Project/training06/Day2/sum"
 				},
 				"linkedServiceName": {
 					"referenceName": "Databricks",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Notebook1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "DB_Valu",
+					"value": {
+						"value": "@activity('Notebook1').output.runOutput",
+						"type": "Expression"
+					}
+				}
 			}
 		],
+		"variables": {
+			"DB_Valu": {
+				"type": "Integer"
+			}
+		},
 		"folder": {
 			"name": "Day8"
 		},
