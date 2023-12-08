@@ -1,0 +1,30 @@
+{
+	"name": "container_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Blob_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Container_Name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": {
+					"value": "@dataset().Container_Name",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
