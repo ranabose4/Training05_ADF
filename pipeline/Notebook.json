@@ -15,7 +15,17 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Repos/Project/training06/Day2/sum"
+					"notebookPath": "/Repos/Project/training06/Day3/Parameter_sum",
+					"baseParameters": {
+						"A": {
+							"value": "@pipeline().parameters.A",
+							"type": "Expression"
+						},
+						"B": {
+							"value": "@pipeline().parameters.B",
+							"type": "Expression"
+						}
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "Databricks",
@@ -47,6 +57,14 @@
 				}
 			}
 		],
+		"parameters": {
+			"A": {
+				"type": "string"
+			},
+			"B": {
+				"type": "string"
+			}
+		},
 		"variables": {
 			"DB_Valu": {
 				"type": "Integer"
