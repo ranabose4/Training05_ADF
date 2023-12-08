@@ -1,0 +1,78 @@
+{
+	"name": "Notebook_Parameter",
+	"properties": {
+		"activities": [
+			{
+				"name": "Notebook1",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Repos/Project/training06/Day3/Parameter_sum",
+					"baseParameters": {
+						"A": {
+							"value": "@pipeline().parameters.A",
+							"type": "Expression"
+						},
+						"B": {
+							"value": "@pipeline().parameters.B",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "Databricks",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Notebook1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "DB_Valu",
+					"value": {
+						"value": "@activity('Notebook1').output.runOutput",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"A": {
+				"type": "string"
+			},
+			"B": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"DB_Valu": {
+				"type": "Integer"
+			}
+		},
+		"folder": {
+			"name": "Day8"
+		},
+		"annotations": []
+	}
+}
