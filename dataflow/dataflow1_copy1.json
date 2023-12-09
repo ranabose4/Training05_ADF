@@ -40,10 +40,10 @@
 					"name": "split1"
 				},
 				{
-					"name": "select4"
+					"name": "filter1"
 				},
 				{
-					"name": "filter1"
+					"name": "alterRow1"
 				}
 			],
 			"scriptLines": [
@@ -111,14 +111,8 @@
 				"     Salary = sum(Salary)) ~> aggregate1",
 				"select2 split(isNull(Gender),",
 				"     disjoint: false) ~> split1@(NullRows, filter1)",
-				"split1@filter1 select(mapColumn(",
-				"          Departmnet_ID,",
-				"          Gender,",
-				"          Salary",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select4",
-				"split1@NullRows filter(isNull(Gender)) ~> filter1"
+				"split1@NullRows filter(isNull(Gender)) ~> filter1",
+				"filter1 alterRow(insertIf(greater(Salary, 100000))) ~> alterRow1"
 			]
 		}
 	}
