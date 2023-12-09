@@ -1,0 +1,125 @@
+{
+	"name": "dataflow1_copy1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "csv_blob",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "csv_blob",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "join1"
+				},
+				{
+					"name": "DerivedColumn"
+				},
+				{
+					"name": "select2"
+				},
+				{
+					"name": "select3"
+				},
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "split1"
+				},
+				{
+					"name": "select4"
+				},
+				{
+					"name": "filter1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          ID as short,",
+				"          First_Name as string,",
+				"          Departmnet_ID as short,",
+				"          Gender as string,",
+				"          Start_Date as date,",
+				"          Last_Login_Time as string,",
+				"          Salary as integer,",
+				"          Bonus as double,",
+				"          Senior_Management as boolean,",
+				"          Team as string,",
+				"          Company_ID as short",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     limit: 100,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source(output(",
+				"          DEPARTMENT_ID as short,",
+				"          DEPARTMENT_NAME as string,",
+				"          MANAGER_ID as string,",
+				"          LOCATION_ID as short",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source2",
+				"source1, source2 join(Departmnet_ID == DEPARTMENT_ID,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join1 derive(Salary_New = multiply(Salary,10)) ~> DerivedColumn",
+				"DerivedColumn select(mapColumn(",
+				"          Departmnet_ID,",
+				"          Gender,",
+				"          Salary",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select2",
+				"DerivedColumn select(mapColumn(",
+				"          ID,",
+				"          First_Name,",
+				"          Departmnet_ID,",
+				"          Gender,",
+				"          Start_Date,",
+				"          Last_Login_Time,",
+				"          Salary,",
+				"          Bonus,",
+				"          Senior_Management,",
+				"          Team,",
+				"          Company_ID,",
+				"          DEPARTMENT_ID,",
+				"          DEPARTMENT_NAME,",
+				"          MANAGER_ID,",
+				"          LOCATION_ID,",
+				"          Salary_New",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select3",
+				"split1@filter1 aggregate(groupBy(Departmnet_ID,",
+				"          Gender),",
+				"     Salary = sum(Salary)) ~> aggregate1",
+				"select2 split(isNull(Gender),",
+				"     disjoint: false) ~> split1@(NullRows, filter1)",
+				"split1@filter1 select(mapColumn(",
+				"          Departmnet_ID,",
+				"          Gender,",
+				"          Salary",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select4",
+				"split1@NullRows filter(isNull(Gender)) ~> filter1"
+			]
+		}
+	}
+}
