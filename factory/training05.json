@@ -9,6 +9,10 @@
 			"DataBase_Name": {
 				"type": "string",
 				"value": "Dev"
+			},
+			"Input_Container": {
+				"type": "string",
+				"value": "input"
 			}
 		},
 		"globalConfigurations": {
