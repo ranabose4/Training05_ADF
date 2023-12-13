@@ -30,8 +30,14 @@
 						"referenceName": "csv_blob",
 						"type": "DatasetReference",
 						"parameters": {
-							"Container_name": "input",
-							"file_name": "employees_blank.csv"
+							"Container_name": {
+								"value": "@pipeline().globalParameters.Input_Container",
+								"type": "Expression"
+							},
+							"file_name": {
+								"value": "@pipeline().parameters.File_Name",
+								"type": "Expression"
+							}
 						}
 					},
 					"firstRowOnly": false
@@ -54,9 +60,28 @@
 						"value": "@equals(activity('Lookup1').output.count,0)",
 						"type": "Expression"
 					},
+					"ifFalseActivities": [
+						{
+							"name": "File_count_not_zero",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "cnt",
+								"value": {
+									"value": "@activity('Lookup1').output.count",
+									"type": "Expression"
+								}
+							}
+						}
+					],
 					"ifTrueActivities": [
 						{
-							"name": "Set variable1",
+							"name": "File_count_0",
 							"type": "SetVariable",
 							"dependsOn": [],
 							"policy": {
@@ -76,6 +101,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"File_Name": {
+				"type": "string"
+			}
+		},
 		"variables": {
 			"cnt": {
 				"type": "Integer"
