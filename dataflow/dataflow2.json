@@ -40,6 +40,12 @@
 				},
 				{
 					"name": "aggregate1"
+				},
+				{
+					"name": "split1"
+				},
+				{
+					"name": "select2"
 				}
 			],
 			"scriptLines": [
@@ -80,8 +86,16 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 aggregate(groupBy(Departmnet_ID),",
+				"split1@aggregation1 aggregate(groupBy(Departmnet_ID),",
 				"     Salary = sum(Salary)) ~> aggregate1",
+				"select1 split(!isNull(Salary),",
+				"     disjoint: false) ~> split1@(aggregation1, select2)",
+				"split1@select2 select(mapColumn(",
+				"          Departmnet_ID,",
+				"          Salary",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select2",
 				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'parquet',",
