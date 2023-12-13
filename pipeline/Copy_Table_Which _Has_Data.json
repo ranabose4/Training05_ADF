@@ -1,0 +1,172 @@
+{
+	"name": "Copy_Table_Which _Has_Data",
+	"properties": {
+		"activities": [
+			{
+				"name": "Script1",
+				"type": "Script",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "SqlServer1",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"Database": {
+							"value": "@pipeline().globalParameters.DataBase_Name",
+							"type": "Expression"
+						}
+					}
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "select count(*) as cnt from dbo.employees"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			},
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "If Condition1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "SqlServerTable1",
+						"type": "DatasetReference",
+						"parameters": {
+							"Schema_name": {
+								"value": "@pipeline().globalParameters.Schema_Name_gbl",
+								"type": "Expression"
+							},
+							"Table_Name": {
+								"value": "@pipeline().parameters.Table_Name",
+								"type": "Expression"
+							},
+							"Database__Name": {
+								"value": "@pipeline().globalParameters.DataBase_Name",
+								"type": "Expression"
+							}
+						}
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Script1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@equals(activity('Script1').output.resultSets[0].rows[0].cnt,0)",
+						"type": "Expression"
+					},
+					"ifFalseActivities": [
+						{
+							"name": "Count_Not_Zero",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "Script_var",
+								"value": {
+									"value": "@activity('Script1').output.value.resultSets.rows.cnt",
+									"type": "Expression"
+								}
+							}
+						}
+					],
+					"ifTrueActivities": [
+						{
+							"name": "Count_Zero",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "Script_var",
+								"value": {
+									"value": "@activity('Script1').output.value.resultSets.rows.cnt",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "If Condition2",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": []
+			}
+		],
+		"parameters": {
+			"Table_Name": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"Script_var": {
+				"type": "Integer"
+			},
+			"lookup_var": {
+				"type": "Integer"
+			}
+		},
+		"folder": {
+			"name": "Prject1"
+		},
+		"annotations": []
+	}
+}
