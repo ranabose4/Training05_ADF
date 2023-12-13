@@ -77,7 +77,7 @@
 							}
 						}
 					},
-					"firstRowOnly": false
+					"firstRowOnly": true
 				}
 			},
 			{
@@ -111,25 +111,6 @@
 								"variableName": "Script_var",
 								"value": {
 									"value": "@activity('Script1').output.resultSets[0].rows[0].cnt",
-									"type": "Expression"
-								}
-							}
-						}
-					],
-					"ifTrueActivities": [
-						{
-							"name": "Count_Zero",
-							"type": "SetVariable",
-							"dependsOn": [],
-							"policy": {
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"variableName": "Script_var",
-								"value": {
-									"value": "@activity('Script1').output.value.resultSets.rows.cnt",
 									"type": "Expression"
 								}
 							}
