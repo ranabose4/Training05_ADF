@@ -1,0 +1,190 @@
+{
+	"name": "CopyActivity Upsert",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": [
+								"ID"
+							]
+						},
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ID",
+									"type": "Int16",
+									"physicalType": "smallint"
+								}
+							},
+							{
+								"source": {
+									"name": "First_Name",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "First_Name",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Departmnet_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Departmnet_ID",
+									"type": "Byte",
+									"physicalType": "tinyint"
+								}
+							},
+							{
+								"source": {
+									"name": "Gender",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Gender",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Salary",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Salary",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "Bonus",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Bonus",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "Team",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Team",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Company_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Company_ID",
+									"type": "Byte",
+									"physicalType": "tinyint"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csv_blob",
+						"type": "DatasetReference",
+						"parameters": {
+							"Container_name": "input",
+							"file_name": "employees.csv"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SqlServerTable1",
+						"type": "DatasetReference",
+						"parameters": {
+							"Schema_name": {
+								"value": "@pipeline().globalParameters.Schema_Name_gbl",
+								"type": "Expression"
+							},
+							"Table_Name": {
+								"value": "@pipeline().parameters.Table_Name",
+								"type": "Expression"
+							},
+							"Database__Name": {
+								"value": "@pipeline().globalParameters.DataBase_Name",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"Table_Name": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Project2"
+		},
+		"annotations": []
+	}
+}
