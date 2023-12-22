@@ -13,6 +13,10 @@
 			"Input_Container": {
 				"type": "string",
 				"value": "input"
+			},
+			"SATABRICKS_TOKEN": {
+				"type": "string",
+				"value": "dapif3c5fee42ff779a87761e0617cc705aa-3"
 			}
 		},
 		"globalConfigurations": {
