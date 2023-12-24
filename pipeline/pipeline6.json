@@ -27,6 +27,16 @@
 				}
 			}
 		],
+		"parameters": {
+			"adasds": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"teat": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "Day9"
 		},

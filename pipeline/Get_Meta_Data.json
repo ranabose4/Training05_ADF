@@ -51,6 +51,11 @@
 				"type": "String"
 			}
 		},
+		"variables": {
+			"Var1": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "Day1"
 		},
