@@ -26,6 +26,9 @@
 				"type": "String"
 			}
 		},
+		"folder": {
+			"name": "Training05"
+		},
 		"annotations": []
 	}
 }

@@ -6,6 +6,9 @@
 				"name": "Execute Pipeline1",
 				"type": "ExecutePipeline",
 				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
@@ -49,7 +52,7 @@
 			}
 		},
 		"folder": {
-			"name": "Day1"
+			"name": "Training05/Day1"
 		},
 		"annotations": []
 	}

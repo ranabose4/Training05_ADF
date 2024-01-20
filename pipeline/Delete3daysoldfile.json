@@ -30,6 +30,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"modifiedDatetimeEnd": {
 							"value": "@adddays(utcnow(),-2)",
 							"type": "Expression"
@@ -117,7 +118,7 @@
 			}
 		},
 		"folder": {
-			"name": "Day 7"
+			"name": "Training05/Day 7"
 		},
 		"annotations": []
 	}

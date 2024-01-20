@@ -132,6 +132,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -151,7 +152,7 @@
 			}
 		},
 		"folder": {
-			"name": "Prject1"
+			"name": "Training05/Prject1"
 		},
 		"annotations": []
 	}

@@ -12,6 +12,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "Training05"
+		},
 		"annotations": [],
 		"lastPublishTime": "2024-01-20T12:20:52Z"
 	},
