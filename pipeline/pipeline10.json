@@ -52,7 +52,7 @@
 						"referenceName": "csv_blob",
 						"type": "DatasetReference",
 						"parameters": {
-							"Container_name": "Input",
+							"Container_name": "rbinput",
 							"file_name": "company.csv"
 						}
 					}
@@ -62,7 +62,7 @@
 						"referenceName": "csv_blob",
 						"type": "DatasetReference",
 						"parameters": {
-							"Container_name": "output",
+							"Container_name": "rboutput",
 							"file_name": "rbtest.csv"
 						}
 					}
