@@ -21,7 +21,7 @@
 						"datasetParameters": {
 							"sink1": {
 								"Container_name": "rboutput",
-								"file_name": "test.cvs"
+								"file_name": "test.csv"
 							}
 						}
 					},
