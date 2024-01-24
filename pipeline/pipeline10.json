@@ -21,7 +21,7 @@
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
 							"wildcardFolderPath": "Input",
-							"wildcardFileName": "*.json",
+							"wildcardFileName": "Rbjsn.json",
 							"deleteFilesAfterCompletion": false
 						},
 						"formatSettings": {
