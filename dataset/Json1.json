@@ -17,15 +17,7 @@
 		"type": "Json",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
-				"fileName": {
-					"value": "@dataset().fn",
-					"type": "Expression"
-				},
-				"container": {
-					"value": "@dataset().cont",
-					"type": "Expression"
-				}
+				"type": "AzureBlobStorageLocation"
 			}
 		},
 		"schema": {}
