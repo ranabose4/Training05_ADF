@@ -7,17 +7,25 @@
 		},
 		"parameters": {
 			"cont": {
-				"type": "string"
+				"type": "String"
 			},
 			"fn": {
-				"type": "string"
+				"type": "String"
 			}
 		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation"
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().fn",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().cont",
+					"type": "Expression"
+				}
 			}
 		},
 		"schema": {}
