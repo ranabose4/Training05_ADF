@@ -19,9 +19,13 @@
 						"referenceName": "RBDataflow1",
 						"type": "DataFlowReference",
 						"datasetParameters": {
+							"source1": {
+								"cont": "rbinput",
+								"fn": "Rbjsn.json"
+							},
 							"sink1": {
 								"Container_name": "rboutput",
-								"file_name": "test.csv"
+								"file_name": "exp1.csv"
 							}
 						}
 					},
