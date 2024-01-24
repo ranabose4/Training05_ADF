@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "RBDataflow1",
+						"referenceName": "dataflow3",
 						"type": "DataFlowReference",
 						"datasetParameters": {
 							"source1": {
