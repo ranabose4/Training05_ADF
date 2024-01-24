@@ -16,54 +16,41 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "DelimitedTextSource",
+						"type": "BinarySource",
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
-							"enablePartitionDiscovery": false
+							"wildcardFolderPath": "Input",
+							"wildcardFileName": "*.json",
+							"deleteFilesAfterCompletion": false
 						},
 						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
+							"type": "BinaryReadSettings"
 						}
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
+						"type": "BinarySink",
 						"storeSettings": {
 							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
 						}
 					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
+					"enableStaging": false
 				},
 				"inputs": [
 					{
-						"referenceName": "csv_blob",
+						"referenceName": "Binary1",
 						"type": "DatasetReference",
 						"parameters": {
-							"Container_name": "Input",
-							"file_name": "Rbjsn.json"
+							"Container": "Input"
 						}
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "csv_blob",
+						"referenceName": "Binary1",
 						"type": "DatasetReference",
 						"parameters": {
-							"Container_name": "output",
-							"file_name": "Rbjsn.json"
+							"Container": "Output"
 						}
 					}
 				]
