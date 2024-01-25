@@ -1,0 +1,96 @@
+{
+	"name": "pipeline3_copy1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "csv_blob",
+						"type": "DatasetReference",
+						"parameters": {
+							"Container_name": "input",
+							"file_name": "employees.csv"
+						}
+					},
+					"fieldList": [
+						"structure"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "Get Metadata2",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "SqlServerTable1",
+						"type": "DatasetReference",
+						"parameters": {
+							"Schema_name": {
+								"value": "@pipeline().globalParameters.Schema_Name_gbl",
+								"type": "Expression"
+							},
+							"Table_Name": {
+								"value": "@pipeline().parameters.Table_Name",
+								"type": "Expression"
+							},
+							"Database__Name": {
+								"value": "@pipeline().globalParameters.DataBase_Name",
+								"type": "Expression"
+							}
+						}
+					},
+					"fieldList": [
+						"structure"
+					]
+				}
+			}
+		],
+		"parameters": {
+			"Container_Name": {
+				"type": "String"
+			},
+			"Table_Name": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "RB/d2"
+		},
+		"annotations": []
+	}
+}
