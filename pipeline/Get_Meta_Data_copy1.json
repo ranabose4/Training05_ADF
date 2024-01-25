@@ -51,6 +51,11 @@
 				"type": "string"
 			}
 		},
+		"variables": {
+			"var1": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "RB/d1"
 		},
