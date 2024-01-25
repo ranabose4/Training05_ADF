@@ -49,11 +49,7 @@
 				"inputs": [
 					{
 						"referenceName": "csv_blob",
-						"type": "DatasetReference",
-						"parameters": {
-							"Container_name": "input",
-							"file_name": "employees.csv"
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
