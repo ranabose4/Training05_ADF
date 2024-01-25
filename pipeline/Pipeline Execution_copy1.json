@@ -30,6 +30,12 @@
 				"type": "string"
 			}
 		},
+		"variables": {
+			"addnew": {
+				"type": "String",
+				"defaultValue": "1"
+			}
+		},
 		"folder": {
 			"name": "RB/d1"
 		},
