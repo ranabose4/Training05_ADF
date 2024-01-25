@@ -17,7 +17,17 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "csv_blob",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Container_name": {
+								"value": "@pipeline().parameters.cont",
+								"type": "Expression"
+							},
+							"file_name": {
+								"value": "@pipeline().parameters.fn",
+								"type": "Expression"
+							}
+						}
 					},
 					"fieldList": [
 						"structure"
