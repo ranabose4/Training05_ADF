@@ -12,24 +12,16 @@
 						"referenceName": "Copy_Data_file_to_file_copy1",
 						"type": "PipelineReference"
 					},
-					"waitOnCompletion": true
+					"waitOnCompletion": true,
+					"parameters": {
+						"input_parameter": "rbinput",
+						"output_parameter": "rboutput",
+						"input_file_name": "company.csv",
+						"output_filename": "abc2.csv"
+					}
 				}
 			}
 		],
-		"parameters": {
-			"pip2_input": {
-				"type": "string"
-			},
-			"pip2_output": {
-				"type": "string"
-			},
-			"pip2_input_file": {
-				"type": "string"
-			},
-			"pip2_output_file": {
-				"type": "string"
-			}
-		},
 		"variables": {
 			"addnew": {
 				"type": "String",
