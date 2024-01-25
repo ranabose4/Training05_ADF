@@ -13,10 +13,6 @@
 				},
 				"secretName": "databasepass"
 			}
-		},
-		"connectVia": {
-			"referenceName": "integrationRuntime1",
-			"type": "IntegrationRuntimeReference"
 		}
 	}
 }

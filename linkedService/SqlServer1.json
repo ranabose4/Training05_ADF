@@ -12,10 +12,6 @@
 		"typeProperties": {
 			"connectionString": "integrated security=False;data source=DHIREN;initial catalog=@{linkedService().Database};user id=test",
 			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyODI2NGVlZS1lYWI5LTQ0OWMtODcwNC1mMTEzOGY0ZGY5MjQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
-		},
-		"connectVia": {
-			"referenceName": "integrationRuntime1",
-			"type": "IntegrationRuntimeReference"
 		}
 	}
 }
