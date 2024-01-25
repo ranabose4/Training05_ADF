@@ -9,28 +9,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "Copy_Data_file_to_file",
+						"referenceName": "Copy_Data_file_to_file_copy1",
 						"type": "PipelineReference"
 					},
-					"waitOnCompletion": true,
-					"parameters": {
-						"input_parameter": {
-							"value": "@pipeline().parameters.pip2_input",
-							"type": "Expression"
-						},
-						"output_parameter": {
-							"value": "@pipeline().parameters.pip2_output",
-							"type": "Expression"
-						},
-						"input_file_name": {
-							"value": "@pipeline().parameters.pip2_input_file",
-							"type": "Expression"
-						},
-						"output_filename": {
-							"value": "@pipeline().parameters.pip2_output_file",
-							"type": "Expression"
-						}
-					}
+					"waitOnCompletion": true
 				}
 			}
 		],
