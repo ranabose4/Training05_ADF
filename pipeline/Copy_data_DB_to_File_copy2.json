@@ -17,9 +17,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "SqlServerSource",
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
+						"type": "MySqlSource"
 					},
 					"sink": {
 						"type": "DelimitedTextSink",
@@ -44,22 +42,8 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SqlServerTable1",
-						"type": "DatasetReference",
-						"parameters": {
-							"Schema_name": {
-								"value": "@pipeline().parameters.Schema_Name",
-								"type": "Expression"
-							},
-							"Table_Name": {
-								"value": "@pipeline().parameters.Table_Name",
-								"type": "Expression"
-							},
-							"Database__Name": {
-								"value": "@pipeline().globalParameters.DataBase_Name",
-								"type": "Expression"
-							}
-						}
+						"referenceName": "MySqlTable1",
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
@@ -68,16 +52,13 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"Container_name": "output",
-							"file_name": "Employee"
+							"file_name": "d2out1"
 						}
 					}
 				]
 			}
 		],
 		"parameters": {
-			"Schema_Name": {
-				"type": "string"
-			},
 			"Table_Name": {
 				"type": "string"
 			}
