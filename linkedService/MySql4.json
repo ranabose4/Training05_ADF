@@ -1,0 +1,23 @@
+{
+	"name": "MySql4",
+	"properties": {
+		"description": "keyv secret password",
+		"annotations": [],
+		"type": "MySql",
+		"typeProperties": {
+			"connectionString": "Server=localhost;Port=3306;Database=rbsql;User=ADFuser;SSLMode=1;UseSystemTrustStore=0",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVaultRB",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "ADFuser"
+			}
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
