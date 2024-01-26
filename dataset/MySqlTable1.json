@@ -5,8 +5,19 @@
 			"referenceName": "MySql4",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"tbl": {
+				"type": "String"
+			}
+		},
 		"annotations": [],
 		"type": "MySqlTable",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"tableName": {
+				"value": "@dataset().tbl",
+				"type": "Expression"
+			}
+		}
 	}
 }
