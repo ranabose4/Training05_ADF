@@ -1,5 +1,13 @@
 {
 	"name": "RB-DF",
+	"properties": {
+		"globalParameters": {
+			"DataBase_Name": {
+				"type": "string",
+				"value": "rbsql"
+			}
+		}
+	},
 	"location": "australiaeast",
 	"identity": {
 		"type": "SystemAssigned",
