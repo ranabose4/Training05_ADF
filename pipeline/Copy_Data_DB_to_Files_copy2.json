@@ -16,9 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "SqlServerSource",
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
+						"type": "MySqlSource"
 					},
 					"sink": {
 						"type": "DelimitedTextSink",
@@ -43,19 +41,11 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SqlServerTable1",
+						"referenceName": "MySqlTable1",
 						"type": "DatasetReference",
 						"parameters": {
-							"Schema_name": {
-								"value": "@pipeline().globalParameters.Schema_Name_gbl",
-								"type": "Expression"
-							},
-							"Table_Name": {
+							"tbl": {
 								"value": "@pipeline().parameters.Table_Name",
-								"type": "Expression"
-							},
-							"Database__Name": {
-								"value": "@pipeline().globalParameters.DataBase_Name",
 								"type": "Expression"
 							}
 						}
@@ -77,9 +67,6 @@
 			}
 		],
 		"parameters": {
-			"Schema_Name": {
-				"type": "string"
-			},
 			"Table_Name": {
 				"type": "string"
 			},
