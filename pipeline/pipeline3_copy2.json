@@ -24,7 +24,7 @@
 						}
 					},
 					"fieldList": [
-						"itemName"
+						"structure"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
