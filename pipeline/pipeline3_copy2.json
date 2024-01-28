@@ -16,14 +16,15 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "csv_blob_copy1",
+						"referenceName": "csv_blob",
 						"type": "DatasetReference",
 						"parameters": {
-							"Container_name": "rbinput"
+							"Container_name": "output",
+							"file_name": "d3out2"
 						}
 					},
 					"fieldList": [
-						"childItems"
+						"itemName"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
