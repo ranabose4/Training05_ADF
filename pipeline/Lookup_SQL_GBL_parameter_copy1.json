@@ -20,7 +20,13 @@
 					},
 					"dataset": {
 						"referenceName": "MySqlTable1",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"tbl": {
+								"value": "@pipeline().parameters.Table_Name",
+								"type": "Expression"
+							}
+						}
 					},
 					"firstRowOnly": false
 				}
