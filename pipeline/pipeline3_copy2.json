@@ -17,7 +17,10 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "csv_blob_copy1",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Container_name": "rbinput"
+						}
 					},
 					"fieldList": [
 						"childItems"
