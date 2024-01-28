@@ -16,21 +16,21 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "SqlServerSource",
-						"sqlReaderQuery": {
-							"value": "@concat('select * from ', pipeline().globalParameters.Schema_Name_gbl, '.', pipeline().parameters.Table_Name)",
+						"type": "MySqlSource",
+						"query": {
+							"value": "@select * from pipeline().parameters.Table_Name where department_id>=50",
 							"type": "Expression"
-						},
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
+						}
 					},
 					"sink": {
-						"type": "ParquetSink",
+						"type": "DelimitedTextSink",
 						"storeSettings": {
 							"type": "AzureBlobStorageWriteSettings"
 						},
 						"formatSettings": {
-							"type": "ParquetWriteSettings"
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
 						}
 					},
 					"enableStaging": false,
@@ -45,19 +45,11 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SqlServerTable1",
+						"referenceName": "MySqlTable1",
 						"type": "DatasetReference",
 						"parameters": {
-							"Schema_name": {
-								"value": "@pipeline().globalParameters.Schema_Name_gbl",
-								"type": "Expression"
-							},
-							"Table_Name": {
+							"tbl": {
 								"value": "@pipeline().parameters.Table_Name",
-								"type": "Expression"
-							},
-							"Database__Name": {
-								"value": "@pipeline().globalParameters.DataBase_Name",
 								"type": "Expression"
 							}
 						}
@@ -65,14 +57,11 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "parquet_file",
+						"referenceName": "csv_blob",
 						"type": "DatasetReference",
 						"parameters": {
-							"path": "output",
-							"output_file": {
-								"value": "@pipeline().parameters.Table_Name",
-								"type": "Expression"
-							}
+							"Container_name": "output",
+							"file_name": "d5out1"
 						}
 					}
 				]
