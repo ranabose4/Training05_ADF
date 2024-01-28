@@ -18,7 +18,7 @@
 					"source": {
 						"type": "MySqlSource",
 						"query": {
-							"value": "@concat('select * from ', pipeline().parameters.Table_Name,' where department_id>=50')",
+							"value": "select * from @pipeline().parameters.Table_Name where  department_id>=50",
 							"type": "Expression"
 						}
 					},
