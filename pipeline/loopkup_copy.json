@@ -102,7 +102,7 @@
 									"parameters": {
 										"Container_name": "rbinput",
 										"file_name": {
-											"value": "@variables('FN_var')",
+											"value": "@item().File",
 											"type": "Expression"
 										}
 									}
