@@ -60,9 +60,9 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "TableName_Var",
+								"variableName": "FN_var",
 								"value": {
-									"value": "@item().Table_name",
+									"value": "@item().File",
 									"type": "Expression"
 								}
 							}
@@ -84,9 +84,33 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "status_VAr",
+								"variableName": "DT_var",
 								"value": {
-									"value": "@item().status",
+									"value": "@item().Date",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "Set variable1_copy1_copy1",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Set variable1_copy1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "ST_var",
+								"value": {
+									"value": "@item().Status",
 									"type": "Expression"
 								}
 							}
@@ -101,10 +125,13 @@
 			}
 		},
 		"variables": {
-			"TableName_Var": {
+			"FN_var": {
 				"type": "String"
 			},
-			"status_VAr": {
+			"DT_var": {
+				"type": "String"
+			},
+			"ST_var": {
 				"type": "String"
 			}
 		},
