@@ -73,12 +73,38 @@
 										"type": "BinaryReadSettings"
 									}
 								},
+								"sink": {
+									"type": "BinarySink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									}
+								},
 								"enableStaging": false
 							},
 							"inputs": [
 								{
-									"referenceName": "Binary1",
-									"type": "DatasetReference"
+									"referenceName": "Binary1_copy1",
+									"type": "DatasetReference",
+									"parameters": {
+										"Container": "rbinput",
+										"FN": {
+											"value": "@variables('FN_var')",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Binary1_copy1",
+									"type": "DatasetReference",
+									"parameters": {
+										"Container": "output",
+										"FN": {
+											"value": "@variables('FN_var')",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
