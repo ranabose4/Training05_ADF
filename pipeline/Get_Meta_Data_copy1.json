@@ -30,7 +30,7 @@
 						}
 					},
 					"fieldList": [
-						"structure"
+						"childItems"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
@@ -77,7 +77,7 @@
 		},
 		"variables": {
 			"var1": {
-				"type": "String"
+				"type": "Array"
 			}
 		},
 		"folder": {
