@@ -64,30 +64,44 @@
 							"userProperties": [],
 							"typeProperties": {
 								"source": {
-									"type": "BinarySource",
+									"type": "DelimitedTextSource",
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
-										"recursive": true
+										"recursive": true,
+										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
-										"type": "BinaryReadSettings"
+										"type": "DelimitedTextReadSettings"
 									}
 								},
 								"sink": {
-									"type": "BinarySink",
+									"type": "DelimitedTextSink",
 									"storeSettings": {
 										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
 									}
 								},
-								"enableStaging": false
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
 							},
 							"inputs": [
 								{
-									"referenceName": "Binary1_copy1",
+									"referenceName": "csv_blob",
 									"type": "DatasetReference",
 									"parameters": {
-										"Container": "rbinput",
-										"FN": {
+										"Container_name": "rbinput",
+										"file_name": {
 											"value": "@variables('FN_var')",
 											"type": "Expression"
 										}
@@ -96,11 +110,11 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "Binary1_copy1",
+									"referenceName": "csv_blob",
 									"type": "DatasetReference",
 									"parameters": {
-										"Container": "output",
-										"FN": {
+										"Container_name": "output",
+										"file_name": {
 											"value": "@variables('FN_var')",
 											"type": "Expression"
 										}
