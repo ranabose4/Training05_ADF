@@ -117,19 +117,6 @@
 						}
 					]
 				}
-			},
-			{
-				"name": "If Condition2",
-				"type": "IfCondition",
-				"dependsOn": [
-					{
-						"activity": "Lookup1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": []
 			}
 		],
 		"parameters": {
